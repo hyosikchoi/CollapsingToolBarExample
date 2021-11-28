@@ -41,6 +41,55 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="pin"
+                android:background="@android:color/transparent"
+                android:elevation="0dp"
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/toolbarBackgroundView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/toolbarContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:fitsSystemWindows="true">
+
+                        <TextView
+                            android:id="@+id/logoTextView"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:scaleType="centerCrop"
+                            android:text="HELL"
+                            android:textColor="@color/red"
+                            android:gravity="center"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </FrameLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
