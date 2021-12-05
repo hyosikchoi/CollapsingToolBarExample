@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
+import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.appbar.AppBarLayout
@@ -17,6 +19,9 @@ class MainActivity : AppCompatActivity() {
 
     private var binding : ActivityMainBinding ?= null
 
+    /** MotionLayout 시작 및 정지 유무 변수 */
+    private var isGateringMotionAnimating : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val mainActivityBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,7 +29,66 @@ class MainActivity : AppCompatActivity() {
         binding = mainActivityBinding
         initViewSettings(mainActivityBinding)
         initAppBar(mainActivityBinding)
+        initScrollView(mainActivityBinding)
+        initMotionLayout(mainActivityBinding)
+    }
 
+    private fun initScrollView(mainActivityBinding: ActivityMainBinding) {
+
+        mainActivityBinding.nestedScrollView.viewTreeObserver.addOnScrollChangedListener {
+            /** 10dp 이상 스크롤이 일어나면 */
+            if(mainActivityBinding.nestedScrollView.scrollY > 10f.dpToPx(this).toInt()) {
+                /** motion animate 가 진행중이지 않다면 */
+                if(isGateringMotionAnimating.not()) {
+                   mainActivityBinding.motionLayout.transitionToEnd()
+                   mainActivityBinding.buttonShownMotionLayout.transitionToEnd()
+                }
+            }
+            /** 반대로 10dp 안쪽으로 들어왔다면 */
+            else {
+                /** motion animate 가 진행중이지 않다면 */
+                if(isGateringMotionAnimating.not()) {
+                    mainActivityBinding.motionLayout.transitionToStart()
+                    mainActivityBinding.buttonShownMotionLayout.transitionToStart()
+                }
+            }
+        }
+
+    }
+
+    private fun initMotionLayout(mainActivityBinding: ActivityMainBinding) {
+
+        mainActivityBinding.motionLayout.setTransitionListener(object: MotionLayout.TransitionListener{
+            /** motion animate 가 시작 됬다면 */
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int
+            ) {
+                /** 시작 및 정지 유무 변수를 시작으로 */
+                isGateringMotionAnimating = true
+
+            }
+
+            override fun onTransitionChange(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+                progress: Float
+            ) {}
+            /** motion animate 가 끝났다면 */
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                /** 시작 및 정지 유무 변수를 정지로 */
+                isGateringMotionAnimating = false
+            }
+
+            override fun onTransitionTrigger(
+                motionLayout: MotionLayout?,
+                triggerId: Int,
+                positive: Boolean,
+                progress: Float
+            ) {}
+        })
 
     }
 
