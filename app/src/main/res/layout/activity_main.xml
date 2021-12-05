@@ -33,11 +33,42 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <!-- collapsing 안에 넣고 싶으면
+                위치는 ToolBar 위에서 정의 해야 collapsing 으로 가려진다. -->
+                <TextView
+                    android:id="@+id/descriptionTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="월 11000원 으로 \n 지금 모두 만나보세요. "
+                    android:textSize="32sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="bottom"
+                    android:textAlignment="center"
+                    android:translationY="15dp"
+                    tools:ignore="RtlCompat"
+                    />
+
                 <androidx.constraintlayout.motion.widget.MotionLayout
                     android:id="@+id/motionLayout"
                     android:layout_width="match_parent"
                     android:layout_height="550dp"
                     app:layoutDescription="@xml/activity_main_xml_constraintlayout_scene">
+
+                    <TextView
+                        android:id="@+id/motionTitleTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="PC , Phone , Tablet 등 \n 다양한 기기에서 만나보세요."
+                        android:textColor="@color/silver"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="195dp"
+                        />
+
 
                     <ImageView
                         android:id="@+id/tvImageView"
@@ -80,7 +111,7 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signUpButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
@@ -126,8 +157,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -172,9 +201,7 @@
 
                 </FrameLayout>
 
-
             </androidx.appcompat.widget.Toolbar>
-
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

@@ -3,6 +3,9 @@ package com.hyosik.android.collapsingtoolbarlayoutex
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +34,12 @@ class MainActivity : AppCompatActivity() {
         initAppBar(mainActivityBinding)
         initScrollView(mainActivityBinding)
         initMotionLayout(mainActivityBinding)
+
+        /** descriptionTextview 중간 text color 변경 */
+        val descriptionText = mainActivityBinding.descriptionTextview.text.toString()
+        val ssb  = SpannableStringBuilder(descriptionText)
+        ssb.setSpan(ForegroundColorSpan(Color.parseColor("#FF0000")), 0 , 8 , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        mainActivityBinding.descriptionTextview.setText(ssb)
     }
 
     private fun initScrollView(mainActivityBinding: ActivityMainBinding) {
