@@ -45,15 +45,24 @@
                     android:textStyle="bold"
                     android:layout_gravity="bottom"
                     android:textAlignment="center"
-                    android:translationY="15dp"
+                    android:layout_marginTop="25dp"
                     tools:ignore="RtlCompat"
                     />
 
                 <androidx.constraintlayout.motion.widget.MotionLayout
                     android:id="@+id/motionLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="550dp"
-                    app:layoutDescription="@xml/activity_main_xml_constraintlayout_scene">
+                    android:layout_height="400dp"
+                    app:layoutDescription="@xml/activity_main_xml_constraintlayout_scene"
+                    android:layout_marginTop="100dp"
+                    >
+
+                    <View
+                        android:id="@+id/motionDimView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/dim_view_background"
+                        />
 
                     <TextView
                         android:id="@+id/motionTitleTextView"
@@ -66,7 +75,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginTop="195dp"
+                        android:layout_marginTop="60dp"
                         />
 
 
@@ -95,6 +104,7 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_tablet"
+                        android:layout_marginTop="150dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,6 +129,8 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:text="정액제 가입"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

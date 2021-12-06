@@ -146,8 +146,7 @@ class MainActivity : AppCompatActivity() {
             //Log.i("percentage" , "percent : ${percentage}")
 
             /** toolBar background 의 alpha 값이 percentage가 커짐에 따라 0 에서 1로 바뀌어야 하므로 */
-            /** 1 - percentage 는 1 에서 0으로 바뀌는 것이므로 반대로 1 - (1- percentage) 로 해준다. */
-            mainActivityBinding.toolbarBackgroundView.alpha = 1 - (1 - percentage)
+            mainActivityBinding.toolbarBackgroundView.alpha = percentage
 
         })
 
