@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initScrollView(mainActivityBinding: ActivityMainBinding) {
 
-        mainActivityBinding.nestedScrollView.viewTreeObserver.addOnScrollChangedListener {
+        mainActivityBinding.nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             /** 10dp 이상 스크롤이 일어나면 */
-            if(mainActivityBinding.nestedScrollView.scrollY > 10f.dpToPx(this).toInt()) {
+            if(scrollY > 5f.dpToPx(this).toInt()) {
                 /** motion animate 가 진행중이지 않다면 */
                 if(isGateringMotionAnimating.not()) {
                    mainActivityBinding.motionLayout.transitionToEnd()
