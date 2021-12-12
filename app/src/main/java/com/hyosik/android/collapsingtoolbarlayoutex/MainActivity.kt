@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     /** MotionLayout 시작 및 정지 유무 변수 */
     private var isGateringMotionAnimating : Boolean = false
 
+    /** CirCle MotionLayout 시작 및 정지 유무 변수 */
+    private var isCurationMotionAnimating : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val mainActivityBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,8 +64,17 @@ class MainActivity : AppCompatActivity() {
                     mainActivityBinding.buttonShownMotionLayout.transitionToStart()
                 }
             }
-        }
+            /** 1차 pc , tv 관련 motion 끝나고 나면 */
+            if(scrollY > mainActivityBinding.motionLayout.height) {
+                if(isCurationMotionAnimating.not()) {
+                    mainActivityBinding.circleMotionLayout.setTransition(R.id.cirCleMotion_start_one , R.id.cirCleMotion_end_one)
+                    mainActivityBinding.circleMotionLayout.transitionToEnd()
+                    isCurationMotionAnimating = true
+                }
+            }
 
+
+        }
     }
 
     private fun initMotionLayout(mainActivityBinding: ActivityMainBinding) {
@@ -97,6 +109,41 @@ class MainActivity : AppCompatActivity() {
                 positive: Boolean,
                 progress: Float
             ) {}
+        })
+
+
+        mainActivityBinding.circleMotionLayout.setTransitionListener(object: MotionLayout.TransitionListener{
+
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int
+            )  = Unit
+
+            override fun onTransitionChange(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+                progress: Float
+            ) = Unit
+
+            /** 1차 circle transition이 끝났다면 */
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+
+                when(currentId) {
+                    R.id.cirCleMotion_end_one -> {
+                        /** 2차 circle transition 으로 셋팅 후 실행 */
+                        mainActivityBinding.circleMotionLayout.setTransition(R.id.cirCleMotion_start_two,R.id.cirCleMotion_end_two)
+                        mainActivityBinding.circleMotionLayout.transitionToEnd()
+                    }
+                }
+            }
+            override fun onTransitionTrigger(
+                motionLayout: MotionLayout?,
+                triggerId: Int,
+                positive: Boolean,
+                progress: Float
+            ) = Unit
         })
 
     }

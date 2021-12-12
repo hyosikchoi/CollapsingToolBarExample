@@ -5,10 +5,9 @@
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity"
     android:background="@color/black"
-    >
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/buttonShownMotionLayout"
@@ -25,8 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,44 +37,40 @@
                     android:id="@+id/descriptionTextview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="월 11000원 으로 \n 지금 모두 만나보세요. "
-                    android:textSize="32sp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
                     android:layout_gravity="bottom"
-                    android:textAlignment="center"
                     android:layout_marginTop="25dp"
-                    tools:ignore="RtlCompat"
-                    />
+                    android:text="월 11000원 으로 \n 지금 모두 만나보세요. "
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
                 <androidx.constraintlayout.motion.widget.MotionLayout
                     android:id="@+id/motionLayout"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    app:layoutDescription="@xml/activity_main_xml_constraintlayout_scene"
                     android:layout_marginTop="100dp"
-                    >
+                    app:layoutDescription="@xml/activity_main_xml_constraintlayout_scene">
 
                     <View
                         android:id="@+id/motionDimView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/dim_view_background"
-                        />
+                        android:background="@drawable/dim_view_background" />
 
                     <TextView
                         android:id="@+id/motionTitleTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="PC , Phone , Tablet 등 \n 다양한 기기에서 만나보세요."
-                        android:textColor="@color/silver"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="60dp"
-                        />
+                        android:text="PC , Phone , Tablet 등 \n 다양한 기기에서 만나보세요."
+                        android:textAlignment="center"
+                        android:textColor="@color/silver"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <ImageView
@@ -84,39 +78,120 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/phoneImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_phone"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/tabletImageView"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_tablet"
                         android:layout_marginTop="150dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:src="@drawable/ic_tablet"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                 </androidx.constraintlayout.motion.widget.MotionLayout>
 
-                <View
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="550dp" />
+                    android:layout_height="wrap_content">
 
+                    <androidx.constraintlayout.motion.widget.MotionLayout
+                        android:id="@+id/circleMotionLayout"
+                        android:layout_width="480dp"
+                        android:layout_height="480dp"
+                        android:layout_marginTop="120dp"
+                        app:layoutDescription="@xml/bottom_description_scene"
+                        app:layout_constraintBottom_toTopOf="@+id/bottomView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <View
+                            android:id="@+id/redView"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/shape_circle"
+                            android:backgroundTint="@color/red"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/greenView"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/shape_circle"
+                            android:backgroundTint="@color/green"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/yellowView"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/shape_circle"
+                            android:backgroundTint="@color/yellow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/purpleView"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/shape_circle"
+                            android:backgroundTint="@color/purple"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/centerTextView"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="지금이 기회 \n 놓치지 마세요!"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textAlignment="center"
+                            android:layout_marginTop="80dp"
+                            />
+
+
+                    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+                    <View
+                        android:id="@+id/bottomView"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/circleMotionLayout" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
@@ -128,13 +203,12 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
+            android:background="@drawable/ripple_signup_button"
             android:text="정액제 가입"
             android:textColor="@color/white"
-            android:backgroundTint="@color/red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -143,8 +217,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:fitsSystemWindows="false"
-        >
+        android:fitsSystemWindows="false">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolBar"
